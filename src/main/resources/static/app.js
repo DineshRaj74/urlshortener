@@ -30,7 +30,18 @@ async function shortenUrl() {
             throw new Error(data.message || "Something went wrong");
         }
 
-        const shortUrl = data.shortUrl || data.data?.shortUrl || data.url || data.shortCode;
+        const shortCode =
+            data.data?.shortCode ||
+            data.shortCode ||
+            extractShortCode(data.data?.shortUrl) ||
+            extractShortCode(data.shortUrl) ||
+            extractShortCode(data.url);
+
+        if (!shortCode) {
+            throw new Error("Short code not found in API response");
+        }
+
+        const shortUrl = `${window.location.origin}/${shortCode}`;
 
         shortUrlElement.textContent = shortUrl;
         shortUrlElement.href = shortUrl;
@@ -39,13 +50,29 @@ async function shortenUrl() {
         showMessage("Short URL created successfully!", "success");
 
     } catch (error) {
-        showMessage("Failed to create short URL. Check API request field name.", "error");
+        showMessage("Failed to create short URL. Please try again.", "error");
         console.error(error);
+    }
+}
+
+function extractShortCode(url) {
+    if (!url) return null;
+
+    try {
+        const parsedUrl = new URL(url);
+        return parsedUrl.pathname.replace("/", "");
+    } catch (error) {
+        return url;
     }
 }
 
 function copyUrl() {
     const shortUrl = document.getElementById("shortUrl").textContent;
+
+    if (!shortUrl) {
+        showMessage("No short URL to copy.", "error");
+        return;
+    }
 
     navigator.clipboard.writeText(shortUrl).then(() => {
         showMessage("Short URL copied to clipboard!", "success");

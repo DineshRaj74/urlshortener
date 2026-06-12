@@ -1,0 +1,24 @@
+# Maven build output
+target/
+data/
+
+# Eclipse IDE files — these should NEVER be committed
+# FIX: These were in .gitignore but still uploaded to the repo. Delete them from git:
+#   git rm --cached .classpath .project
+.classpath
+.project
+.settings/
+
+# IntelliJ / VS Code
+.idea/
+.vscode/
+*.iml
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Secrets — never commit these
+.env
+application-local.properties
+application-prod.properties

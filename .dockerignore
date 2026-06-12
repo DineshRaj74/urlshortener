@@ -1,0 +1,28 @@
+# Exclude these from Docker build context — speeds up builds significantly
+
+# Git
+.git
+.gitignore
+
+# IDE files
+.classpath
+.project
+.settings/
+.idea/
+.vscode/
+
+# Maven build output (build happens inside Docker, not outside)
+target/
+
+# Docs and config not needed inside the image
+README.md
+Dockerfile
+docker-compose.yml
+
+# Secrets
+.env
+application-local.properties
+application-prod.properties
+
+# Logs
+*.log

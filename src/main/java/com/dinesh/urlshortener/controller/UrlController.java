@@ -22,13 +22,6 @@ public class UrlController {
         this.urlService = urlService;
     }
 
-    @GetMapping("/")
-    public ResponseEntity<Void> home() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(URI.create("/index.html"));
-        return new ResponseEntity<>(headers, HttpStatus.FOUND);
-    }
-
     @GetMapping("/api/health")
     public Map<String, String> health() {
         return Map.of("status", "UP");
@@ -50,7 +43,7 @@ public class UrlController {
         return ResponseEntity.ok(ApiResponse.ok("URLs fetched", urlService.getAllUrls()));
     }
 
-    @GetMapping("/{shortCode}")
+    @GetMapping("/{shortCode:[a-zA-Z0-9]+}")
     public ResponseEntity<Void> redirect(@PathVariable String shortCode, HttpServletRequest request) {
         String originalUrl = urlService.registerClickAndGetOriginalUrl(shortCode, request);
 

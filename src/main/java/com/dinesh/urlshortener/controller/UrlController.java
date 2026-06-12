@@ -15,6 +15,7 @@ import java.util.Map;
 
 @RestController
 public class UrlController {
+
     private final UrlService urlService;
 
     public UrlController(UrlService urlService) {
@@ -22,13 +23,10 @@ public class UrlController {
     }
 
     @GetMapping("/")
-    public Map<String, String> home() {
-        return Map.of(
-                "app", "URL Shortener Analytics API",
-                "health", "/api/health",
-                "shorten", "POST /api/shorten",
-                "stats", "GET /api/stats/{shortCode}"
-        );
+    public ResponseEntity<Void> home() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(URI.create("/index.html"));
+        return new ResponseEntity<>(headers, HttpStatus.FOUND);
     }
 
     @GetMapping("/api/health")
@@ -55,8 +53,10 @@ public class UrlController {
     @GetMapping("/{shortCode}")
     public ResponseEntity<Void> redirect(@PathVariable String shortCode, HttpServletRequest request) {
         String originalUrl = urlService.registerClickAndGetOriginalUrl(shortCode, request);
+
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(URI.create(originalUrl));
+
         return new ResponseEntity<>(headers, HttpStatus.FOUND);
     }
 }

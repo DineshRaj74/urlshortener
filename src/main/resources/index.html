@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener | Dinesh Raj</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<main class="container">
+    <section class="hero">
+        <div class="badge">Spring Boot + HTML + CSS + JS</div>
+        <h1>URL Shortener<br><span>Analytics API</span></h1>
+        <p>Shorten long URLs instantly and track link analytics with a clean professional interface.</p>
+
+        <div class="card">
+            <label>Paste your long URL</label>
+            <div class="input-group">
+                <input type="url" id="longUrl" placeholder="https://example.com/very-long-url" />
+                <button onclick="shortenUrl()">Shorten</button>
+            </div>
+
+            <div id="message"></div>
+
+            <div id="resultBox" class="result-box hidden">
+                <p>Your short URL</p>
+                <div class="short-link">
+                    <a id="shortUrl" href="#" target="_blank"></a>
+                    <button onclick="copyUrl()">Copy</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div>
+            <h3>Fast</h3>
+            <p>Generate short links quickly using REST API.</p>
+        </div>
+        <div>
+            <h3>Analytics</h3>
+            <p>Track clicks and usage through API endpoints.</p>
+        </div>
+        <div>
+            <h3>Deployed</h3>
+            <p>Live backend deployed on Render cloud.</p>
+        </div>
+    </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,64 +1,151 @@
-# URL Shortener + Analytics API
+# URL Shortener & Analytics API
 
-A Spring Boot REST API to create short URLs, redirect users, and track click analytics.
+A production-ready URL Shortener application built using Spring Boot that allows users to shorten long URLs, track click analytics, and manage links through a responsive frontend interface.
+
+## Live Demo
+
+https://url-shortener-55d8.onrender.com
+
+---
+
+## Features
+
+* Shorten long URLs instantly
+* Redirect users using generated short links
+* Track URL click analytics
+* RESTful API architecture
+* Responsive frontend using HTML, CSS, and JavaScript
+* Cloud deployment using Render
+* Spring Data JPA integration
+* H2 database support
+
+---
 
 ## Tech Stack
 
-- Java 17
-- Spring Boot 3.3.5
-- Spring Web
-- Spring Data JPA
-- MySQL
-- H2 for local quick testing
-- Docker
+### Backend
+
+* Java 17
+* Spring Boot 3
+* Spring Data JPA
+* Maven
+
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+
+### Database
+
+* H2 Database
+
+### Deployment
+
+* Render
+
+---
 
 ## API Endpoints
 
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/health` | Check app status |
-| POST | `/api/shorten` | Create a short URL |
-| GET | `/{shortCode}` | Redirect to original URL |
-| GET | `/api/stats/{shortCode}` | Get analytics |
-| GET | `/api/urls` | List all URLs |
+### Health Check
 
-## Create Short URL
+GET
+
+```http
+/api/health
+```
+
+### Create Short URL
+
+POST
+
+```http
+/api/shorten
+```
+
+Request Body:
 
 ```json
-POST /api/shorten
-Content-Type: application/json
-
 {
   "originalUrl": "https://example.com"
 }
 ```
 
-## Local Run
+### Get URL Statistics
 
-```bash
-mvn spring-boot:run
+GET
+
+```http
+/api/stats/{shortCode}
 ```
 
-Open:
+### Get All URLs
+
+GET
+
+```http
+/api/urls
+```
+
+---
+
+## Project Structure
 
 ```text
-http://localhost:8080/api/health
+src
+├── main
+│   ├── java
+│   │   ├── controller
+│   │   ├── service
+│   │   ├── repository
+│   │   ├── entity
+│   │   └── dto
+│   │
+│   └── resources
+│       ├── static
+│       │   ├── index.html
+│       │   ├── style.css
+│       │   └── app.js
+│       └── application.properties
 ```
 
-## MySQL Environment Variables
+---
 
-For Render or production, add these environment variables:
+## Screenshots
 
-```text
-DB_URL=jdbc:mysql://HOST:PORT/DATABASE_NAME?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-DB_USERNAME=your_mysql_username
-DB_PASSWORD=your_mysql_password
-APP_BASE_URL=https://your-render-app.onrender.com
-```
+Add screenshots of:
 
-## Docker Build
+* Homepage UI
+* URL shortening feature
+* Analytics feature
 
-```bash
-docker build -t url-shortener .
-docker run -p 8080:8080 url-shortener
-```
+---
+
+## Learning Outcomes
+
+* REST API Development
+* Spring Boot Application Design
+* Frontend and Backend Integration
+* Database Management
+* Cloud Deployment
+* Git & GitHub Workflow
+
+---
+
+## Author
+
+Dinesh Raj S
+
+GitHub:
+https://github.com/DineshRaj74
+
+Portfolio:
+https://dineshraj74.github.io/Portfolio-/
+
+LinkedIn:
+Add your LinkedIn profile link here
+
+---
+
+⭐ If you found this project useful, consider giving it a star.

@@ -112,15 +112,6 @@ src
 
 ---
 
-## Screenshots
-
-Add screenshots of:
-
-* Homepage UI
-* URL shortening feature
-* Analytics feature
-
----
 
 ## Learning Outcomes
 
@@ -144,7 +135,7 @@ Portfolio:
 https://dineshraj74.github.io/Portfolio-/
 
 LinkedIn:
-Add your LinkedIn profile link here
+www.linkedin.com/in/dineshra-j07042005
 
 ---
 
